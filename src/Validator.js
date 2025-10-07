@@ -17,9 +17,10 @@ export class Validator {
       } else {
         this.showError(errorMessage);
         this.field.classList.add("invalid");
-        break;
+        return false;
       }
     }
+    return true;
   };
 
   // Takes an object including

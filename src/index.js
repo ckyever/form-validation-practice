@@ -87,3 +87,18 @@ confirmPasswordValidator.addValidCheck((value) => {
 }, "Passwords must match");
 
 confirmPassword.addEventListener("blur", confirmPasswordValidator.isValid);
+
+// Validate all fields on submit
+const form = document.querySelector("form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (
+    emailValidator.isValid() &
+    countryValidator.isValid() &
+    postcodeValidator.isValid() &
+    passwordValidator.isValid() &
+    confirmPasswordValidator.isValid()
+  ) {
+    alert("Congrats, you can complete a sign up form");
+  }
+});
