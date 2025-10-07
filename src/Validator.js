@@ -13,13 +13,13 @@ export class Validator {
     for (const { validFunction, errorMessage } of this.validCheck) {
       if (validFunction(this.field.value) === true) {
         this.showError("");
+        this.field.classList.remove("invalid");
       } else {
         this.showError(errorMessage);
+        this.field.classList.add("invalid");
         break;
       }
     }
-
-    // If it isn't add red style to input
   };
 
   // Takes an object including
