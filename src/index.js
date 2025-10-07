@@ -30,3 +30,22 @@ countryValidator.addValidCheck((value) => {
 }, "Country can only contain letters");
 
 country.addEventListener("blur", countryValidator.isValid);
+
+// Postcode validation
+const postcode = document.getElementById("postcode");
+const postcodeValidator = new Validator(postcode);
+
+postcodeValidator.addValidCheck((value) => {
+  return value.length > 0;
+}, "Please enter a postcode");
+
+postcodeValidator.addValidCheck((value) => {
+  const postcodeRegExp = /^[0-9]+$/;
+  return postcodeRegExp.test(value);
+}, "Postcode can only contain numbers");
+
+postcodeValidator.addValidCheck((value) => {
+  return value.length <= 10;
+}, "Postcode must be less than 10 digits long");
+
+postcode.addEventListener("blur", postcodeValidator.isValid);
